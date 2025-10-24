@@ -68,24 +68,6 @@ def afundados(frota, tabuleiro):
 
     return total_afundados
 
-
-def define_posicoes(linha, coluna, orientacao, tamanho):
-    """
-    Retorna a lista de posições (cada uma como [linha, coluna]) ocupadas por um navio
-    começando em (linha, coluna) com a orientacao ('horizontal' ou 'vertical') e dado tamanho.
-    """
-    posicoes = []
-    if orientacao == 'horizontal':
-        for c in range(coluna, coluna + tamanho):
-            posicoes.append([linha, c])
-    elif orientacao == 'vertical':
-        for r in range(linha, linha + tamanho):
-            posicoes.append([r, coluna])
-    else:
-        raise ValueError("orientacao deve ser 'horizontal' ou 'vertical'")
-    return posicoes
-
-
 def posicao_valida(frota, linha, coluna, orientacao, tamanho):
    
     posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
