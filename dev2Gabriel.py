@@ -1,5 +1,5 @@
 def define_posicoes(linha, coluna, orientacao, tamanho):
-    posicoes = []
+    lista_posicoes = []
     grid = [
       [0,0,0,0,0,0,0,0,0,0],
       [0,0,0,0,0,0,0,0,0,0],
@@ -10,14 +10,24 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
       [0,0,0,0,0,0,0,0,0,0],
       [0,0,0,0,0,0,0,0,0,0],
       [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,0,0,0,0,0,0],
-  ]
-
-    if orientacao == "vertical":
+      [0,0,0,0,0,0,0,0,0,0],]
+    
+    if orientacao == 'vertical':
         for i in range(tamanho):
-            posicoes.append([linha + i, coluna])
-    elif orientacao == "horizontal":
+            lista_posicoes.append([linha + i, coluna])
+    elif orientacao == 'horizontal':
         for i in range(tamanho):
-            posicoes.append([linha, coluna + i])
+            lista_posicoes.append([linha, coluna + i])
+    
+    return lista_posicoes
 
-    return posicoes
+def preenche_frota(frota, navio, linha, coluna, orientacao, tamanho):
+    
+    posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
+
+    if navio not in frota:
+        frota[navio] = [posicoes]
+    else:
+        frota[navio].append(posicoes)
+
+    return frota
