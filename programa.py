@@ -37,5 +37,6 @@ for nome, tamanho, quantidade in embarcacoes:
 
     print(frota)
 
-
+if __name__ == "__main__":
+    main()
 
