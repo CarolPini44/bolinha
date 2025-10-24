@@ -13,11 +13,11 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
         [0,0,0,0,0,0,0,0,0,0],
     ]
     if orientacao == 'horizontal':
-        for i in len(tamanho):
+        for i in range(tamanho):
             lista_posicoes.append([linha + i, coluna])
 
     elif orientacao == 'vertical':
-        for i in len(tamanho):
+        for i in range(tamanho):
             lista_posicoes.append([linha, coluna + i])
     
     return lista_posicoes
