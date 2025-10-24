@@ -1,4 +1,5 @@
 def define_posicoes(linha, coluna, orientacao, tamanho):
+    lista_posicoes = []
     grid = [
         [0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0],
@@ -11,4 +12,14 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
         [0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0],
     ]
+    if orientacao == 'horizontal':
+        for i in len(tamanho):
+            lista_posicoes.append([linha + i, coluna])
+
+    elif orientacao == 'vertical':
+        for i in len(tamanho):
+            lista_posicoes.append([linha, coluna + i])
     
+    return lista_posicoes
+    
+
