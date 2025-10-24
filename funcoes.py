@@ -48,11 +48,10 @@ def posiciona_frota(frota):
             linha.append(0)
         tabuleiro.append(linha)
 
-    for navio in frota:
-        for qnt_navio in frota[navio]:
+    for navios in frota:
+        for qnt_navio in frota[navios]:
             for pos in qnt_navio:
                 linha = pos[0]
                 coluna = pos[1]
                 tabuleiro[linha][coluna] = 1  
     return tabuleiro
-
