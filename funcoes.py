@@ -11,7 +11,3 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
     
     return lista_posicoes
 
-y = define_posicoes(2, 4 ,'vertical', 3)
-print(y)
-    
-
