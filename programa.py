@@ -6,6 +6,7 @@ frota = {
     "contratorpedeiro": [],
     "submarino": [],
 }
+
 embarcacoes = [
     ("porta-aviões", 4, 1),
     ("navio-tanque", 3, 2),
@@ -29,7 +30,7 @@ for nome, tamanho, quantidade in embarcacoes:
 
             if posicao_valida(frota, linha, coluna, orientacao, tamanho):
                 posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
-                preenche_frota(frota, nome, posicoes)
+                preenche_frota(frota, nome, posicoes, linha, coluna, orientacao)
                 posicionado = True
             else:
                 print("Esta posição não está válida!")
