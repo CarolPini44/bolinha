@@ -34,7 +34,15 @@ for nome, tamanho, quantidade in embarcacoes:
             else:
                 print("Esta posição não está válida!")
 
-
+def y(mensagem):
+    entrada = input(mensagem)
+    while True:
+        if entrada.isdigit():
+            valor = int(entrada)
+            if valor >= 0 and valor <= 9:
+                return valor
+        print("Entrada inválida!")
+        entrada = input(mensagem)
 
 frota_oponente = {
     'porta-aviões': [
