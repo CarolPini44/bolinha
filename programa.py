@@ -1,4 +1,4 @@
-from funcoes import posicao_valida, define_posicoes, preenche_frota
+from funcoes import posicao_valida, define_posicoes, preenche_frota, faz_jogada, posiciona_frota, afundados, monta_tabuleiros, x
 
 frota = {
     "porta-aviões": [],
@@ -25,8 +25,8 @@ for nome, tamanho, quantidade in embarcacoes:
             if tamanho == 1:
                 orientacao = 'horizontal'
             else:
-                opc = int(input("1 Vertical e 2 Horizontal >"))
-                orientacao = 'vertical' if opc == 1 else 'horizontal'
+                x = int(input("1 vertical e 2 horizontal >"))
+                orientacao = 'vertical' if x == 1 else 'horizontal'
 
             if posicao_valida(frota, linha, coluna, orientacao, tamanho):
                 preenche_frota(frota, nome, linha, coluna, orientacao, tamanho)
@@ -34,4 +34,61 @@ for nome, tamanho, quantidade in embarcacoes:
             else:
                 print("Esta posição não está válida!")
 
-print(frota)
+frota_oponente = {
+    'porta-aviões': [
+        [[9, 1], [9, 2], [9, 3], [9, 4]]
+    ],
+    'navio-tanque': [
+        [[6, 0], [6, 1], [6, 2]],
+        [[4, 3], [5, 3], [6, 3]]
+    ],
+    'contratorpedeiro': [
+        [[1, 6], [1, 7]],
+        [[0, 5], [1, 5]],
+        [[3, 6], [3, 7]]
+    ],
+    'submarino': [
+        [[2, 7]],
+        [[0, 6]],
+        [[9, 7]],
+        [[7, 6]]
+    ]
+}
+
+tabuleiro_oponente = posiciona_frota(frota_oponente)
+tabuleiro_jogador = posiciona_frota(frota)
+
+total_navios_oponente = 0
+for lista in frota_oponente.values():
+    for navio in lista:
+        total_navios_oponente = total_navios_oponente + 1
+
+ataques = []
+
+jogar = True
+
+while jogar:
+    print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
+
+linha_de_ataque = x('')
+coluna_de_ataque = x('')
+
+repete = False
+i = 0
+while i < len(ataques):
+    p = ataques[i]
+    if p[0] == linha_de_ataque and p[1] == coluna_de_ataque:
+        repete = True
+    i+=1
+
+if repete == True:
+    print('A posição linha', linha_de_ataque,  'e coluna', coluna_de_ataque, 'já foi informada anteriormente!')
+else:
+    ataques.append([linha_de_ataque, coluna_de_ataque])
+    tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha_de_ataque, coluna_de_ataque)
+    print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
+
+afundades = afundados(frota_oponente, tabuleiro_oponente)
+if afundades == total_navios_oponente:
+    print('A posição linha LINHA e coluna COLUNA já foi informada anteriormente!')
+    jogar = False
