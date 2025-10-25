@@ -93,3 +93,13 @@ def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
         oponente_info = '  '.join([info if str(info) in 'X-' else '0' for info in tabuleiro_oponente[linha]])
         texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
     return texto
+
+def y(mensagem):
+    entrada = input(mensagem)
+    while True:
+        if entrada.isdigit():
+            valor = int(entrada)
+            if valor >= 0 and valor <= 9:
+                return valor
+        print("Entrada inválida!")
+        entrada = input(mensagem)
