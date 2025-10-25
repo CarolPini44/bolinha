@@ -1,4 +1,4 @@
-from funcoes import posicao_valida, define_posicoes, preenche_frota, faz_jogada, posiciona_frota, afundados, monta_tabuleiros
+from funcoes import posicao_valida, define_posicoes, preenche_frota, faz_jogada, posiciona_frota, afundados, monta_tabuleiros, y
 
 frota = {
     "porta-aviões": [],
